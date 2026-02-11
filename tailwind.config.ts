@@ -13,6 +13,9 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ["Inter", "system-ui", "sans-serif"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -57,6 +60,27 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        clinical: {
+          ordered: "hsl(var(--status-ordered))",
+          acknowledged: "hsl(var(--status-acknowledged))",
+          "in-progress": "hsl(var(--status-in-progress))",
+          completed: "hsl(var(--status-completed))",
+          cancelled: "hsl(var(--status-cancelled))",
+          rejected: "hsl(var(--status-rejected))",
+          overdue: "hsl(var(--status-overdue))",
+        },
+        priority: {
+          stat: "hsl(var(--priority-stat))",
+          urgent: "hsl(var(--priority-urgent))",
+          routine: "hsl(var(--priority-routine))",
+        },
+        dept: {
+          pharmacy: "hsl(var(--dept-pharmacy))",
+          lab: "hsl(var(--dept-lab))",
+          imaging: "hsl(var(--dept-imaging))",
+          nursing: "hsl(var(--dept-nursing))",
+          doctor: "hsl(var(--dept-doctor))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -65,20 +89,12 @@ export default {
       },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
         },
       },
       animation: {
