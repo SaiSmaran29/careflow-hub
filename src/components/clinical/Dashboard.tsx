@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useClinical } from '@/context/ClinicalContext';
+import { useAuth } from '@/context/AuthContext';
 import { PatientSummaryPanel } from '@/components/clinical/PatientSummaryPanel';
 import { CareTimeline } from '@/components/clinical/CareTimeline';
 import { ActiveTasksPanel } from '@/components/clinical/ActiveTasksPanel';
@@ -7,13 +8,15 @@ import { DepartmentQueue } from '@/components/clinical/DepartmentQueue';
 import { RoleSwitcher } from '@/components/clinical/RoleSwitcher';
 import { PatientList } from '@/components/clinical/PatientList';
 import { roleConfig, departmentConfig } from '@/lib/clinicalConfig';
-import { Activity, LayoutGrid, Users, Bell, ListTodo } from 'lucide-react';
+import { Activity, LayoutGrid, Users, Bell, ListTodo, LogOut } from 'lucide-react';
 import { Department } from '@/types/clinical';
+import { Button } from '@/components/ui/button';
 
 type View = 'timeline' | 'queues';
 
 export function Dashboard() {
   const { currentUser, getDepartmentActions } = useClinical();
+  const { signOut, role } = useAuth();
   const [view, setView] = useState<View>('timeline');
 
   const userDept = roleConfig[currentUser.role].department;
@@ -74,6 +77,19 @@ export function Dashboard() {
           <div className="flex-1 overflow-y-auto">
             <PatientList />
           </div>
+        </div>
+
+        {/* Sign Out */}
+        <div className="p-3 border-t border-sidebar-border">
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={signOut}
+            className="w-full justify-start gap-2 text-sidebar-foreground/60 hover:text-sidebar-foreground hover:bg-sidebar-accent/50"
+          >
+            <LogOut className="h-4 w-4" />
+            Sign Out
+          </Button>
         </div>
       </div>
 
